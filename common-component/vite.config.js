@@ -12,7 +12,7 @@ export default defineConfig({
       name: "common_component",
       filename: "remoteEntry.js",
       exposes: {
-        "./Navbar": "./src/components/Navbar.jsx",
+        "./About": "./src/components/About.jsx",
       },
       remotes: {
         store: "http://localhost:5002/assets/remoteEntry.js",

@@ -14,7 +14,7 @@ export default defineConfig({
       remotes: {
         store: "http://localhost:5002/assets/remoteEntry.js",
         home_component: "http://localhost:5001/assets/remoteEntry.js",
-        common_component: "http://localhost:5003/assets/remoteEntry.js",
+        about_section: "http://localhost:5003/assets/remoteEntry.js",
       },
       shared: {
         react: {

@@ -9,19 +9,15 @@ export default defineConfig({
   plugins: [
     react(),
     federation({
-      name: "integri_app",
+      name: "integri_component",
       filename: "remoteEntry.js",
       exposes: {
-        "./Home": "./src/components/HomeSection.jsx", 
+        "./HomeSection": "./src/components/HomeSection.jsx",
+        "./HomePage": "./src/pages/HomeSection.jsx",
+        "./AboutPage": "./src/pages/About.jsx",
       },
-      shared: {
-        react: { singleton: true, requiredVersion: "^18.0.0" },
-        "react-dom": { singleton: true, requiredVersion: "^18.0.0" },
-        "react-redux": { singleton: true, requiredVersion: "^8.0.0" },
-        redux: { singleton: true, requiredVersion: "^4.0.0" },
-      },
-      dev: true,
-    }),
+      shared: ["react", "react-dom"],
+    })    
   ],
   build: {
     target: "esnext",

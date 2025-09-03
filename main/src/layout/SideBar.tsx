@@ -9,6 +9,7 @@ import {
   ChevronRight,
   ChevronDown,
 } from "lucide-react";
+import { Card } from "flowbite-react";
 
 interface SubItem {
   path: string;
@@ -28,6 +29,8 @@ interface MenuItem {
   subItems?: Section[];
 }
 
+
+
 export const Sidebar: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -43,14 +46,18 @@ export const Sidebar: React.FC = () => {
     }));
   };
 
-  const handleSectionClick = (label: string, hasSubItems: boolean, item?: MenuItem) => {
+  const handleSectionClick = (
+    label: string,
+    hasSubItems: boolean,
+    item?: MenuItem
+  ) => {
     if (hasSubItems) {
       setActiveSection((prev) => (prev === label ? null : label));
-      setOpenDropdowns({});
-      const defaultPath = item?.subItems?.[0]?.children?.[0]?.path;
-      if (defaultPath && !location.pathname.startsWith("/integri")) {
-        navigate(defaultPath);
-      }
+      // setOpenDropdowns({});
+      // const defaultPath = item?.subItems?.[0]?.children?.[0]?.path;
+      // if (defaultPath && !location.pathname.startsWith("/integri")) {
+      //   navigate(defaultPath);
+      // }
     } else {
       setActiveSection(null);
     }
@@ -64,16 +71,36 @@ export const Sidebar: React.FC = () => {
         {
           label: "Code Integri",
           children: [
-            { path: "/integri/home", label: "Targets", icon: <Target size={18} /> },
-            { path: "/integri/about", label: "Dashboard", icon: <Home size={18} /> },
+            {
+              path: "/integri/home",
+              label: "Targets",
+              icon: <Target size={18} />,
+            },
+            {
+              path: "/integri/about",
+              label: "Dashboard",
+              icon: <Home size={18} />,
+            },
           ],
         },
         {
           label: "Model Integri",
           children: [
-            { path: "/Model-about", label: "Dashboard", icon: <Home size={18} /> },
-            { path: "/Model-targets", label: "Agents", icon: <Target size={18} /> },
-            { path: "/Model-scans", label: "Scans", icon: <BarChart size={18} /> },
+            {
+              path: "/Model-about",
+              label: "Dashboard",
+              icon: <Home size={18} />,
+            },
+            {
+              path: "/Model-targets",
+              label: "Agents",
+              icon: <Target size={18} />,
+            },
+            {
+              path: "/Model-scans",
+              label: "Scans",
+              icon: <BarChart size={18} />,
+            },
           ],
         },
       ],
@@ -84,8 +111,10 @@ export const Sidebar: React.FC = () => {
   const activeMenu = menuItems.find((m) => m.label === activeSection);
 
   return (
-    <div className="flex border-gray-700 border-t">
-      <div className="w-[68px] flex flex-col bg-gradient-to-b from-gray-900 to-gray-950 text-white border-r border-gray-700">
+    <div className="flex border-t border-gray-700  pt-5">
+      {/* Left Sidebar (icon bar) */}
+      
+      <div className="w-[68px] flex flex-col bg-gray-900-950 text-white border-r border-gray-700">
         <div className="flex flex-col items-center h-screen pt-16">
           {menuItems.map((item) => {
             const isActive = activeSection === item.label;
@@ -96,8 +125,8 @@ export const Sidebar: React.FC = () => {
                 key={item.label}
                 type="button"
                 onClick={() => handleSectionClick(item.label, true, item)}
-                className={`flex flex-col items-center py-2 w-full hover:bg-gray-800 transition-colors duration-300 ${
-                  isActive ? "bg-gray-800" : ""
+                className={`flex flex-col items-center py-2 w-full hover:bg-gray-800  transition-colors duration-300 ${
+                  isActive ? "bg-gray-800 rounded-lg " : ""
                 }`}
               >
                 {item.icon}
@@ -120,25 +149,32 @@ export const Sidebar: React.FC = () => {
           })}
         </div>
       </div>
+
+      {/* Right Sidebar (submenu) */}
       <div
-        className={`overflow-hidden bg-gradient-to-b pt-16 from-gray-900 to-gray-950 text-white border-r border-gray-700 transition-all duration-500 ease-in-out h-full ${
-          activeMenu && activeMenu.subItems ? "w-[196px] opacity-100" : "w-0 opacity-0"
+        className={`overflow-hidden bg-gradient-to-b from-gray-900 to-gray-950 pt-16 text-white border-r border-gray-700 transition-all duration-500 ease-in-out h-full ${
+          activeMenu && activeMenu.subItems
+            ? "w-[196px] opacity-100"
+            : "w-0 opacity-0"
         }`}
       >
         {activeMenu && activeMenu.subItems && (
-          <div className="space-y-4 py-[16px] px-[12px] h-full overflow-auto">
+          <div className="space-y-4  px-[12px] h-full overflow-auto">
             {activeMenu.subItems.map((section) => {
               const defaultPath = section.children?.[0]?.path;
               return (
                 <div key={section.label}>
                   {section.children ? (
                     <>
+                      {/* Section header */}
                       <button
                         type="button"
                         onClick={() => toggleDropdown(section.label)}
                         className="flex items-center justify-between w-full p-[6px] text-gray-300 hover:bg-gray-700 rounded-md transition-all"
                       >
-                        <span className="text-sm font-medium">{section.label}</span>
+                        <span className="text-sm font-medium">
+                          {section.label}
+                        </span>
                         {openDropdowns[section.label] ? (
                           <ChevronDown size={16} />
                         ) : (
@@ -146,15 +182,18 @@ export const Sidebar: React.FC = () => {
                         )}
                       </button>
 
+                      {/* Children links */}
                       {openDropdowns[section.label] && (
                         <div className="mt-2 space-y-2">
                           {section.children.map((subItem) => {
-                            const isActive = location.pathname.startsWith(subItem.path);
+                            const isActive = location.pathname.startsWith(
+                              subItem.path
+                            );
                             return (
                               <Link
                                 key={subItem.path}
                                 to={subItem.path}
-                                onClick={() => setActiveSection(null)} 
+                                onClick={() => setActiveSection(null)}
                                 className={`flex items-center p-[6px] rounded-lg transition-all duration-300 ${
                                   isActive
                                     ? "bg-gray-700 font-medium text-white"

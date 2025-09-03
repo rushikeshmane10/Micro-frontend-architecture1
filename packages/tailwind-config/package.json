@@ -2,9 +2,9 @@
   "name": "tailwind-config",
   "version": "1.0.0",
   "description": "Shared TailwindCSS config for monorepo",
-  "main": "index.js",
+  "main": "tailwind.config.js",
   "exports": {
-    ".": "./index.js"
+    ".": "./tailwind.config.js"
   },
   "peerDependencies": {
     "tailwindcss": "^3.4.0"
@@ -22,5 +22,9 @@
   ],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.15.0"
+  "packageManager": "pnpm@10.15.0",
+  "dependencies": {
+    "flowbite": "^3.1.2",
+    "flowbite-react": "^0.12.8"
+  }
 }

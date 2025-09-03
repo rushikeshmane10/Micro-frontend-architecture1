@@ -1,8 +1,9 @@
 import { Bell, MoreVertical } from "lucide-react";
 import logo from "../../public/Asset/logo.png";
+
 export const Navbar = () => {
   return (
-    <div className="w-full  py-4 flex items-center px-6 bg-gradient-to-r from-gray-900 via-gray-800 to-black shadow-md">
+    <div className="w-full absolute z-50 h-[64px] flex items-center px-6 bg-gradient-to-r from-gray-900 via-gray-800 to-black shadow-md">
       <div className="flex items-center space-x-2 h-8 w-32  ">
         <img
           src={logo}

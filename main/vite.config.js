@@ -3,9 +3,6 @@ import react from "@vitejs/plugin-react";
 import federation from "@originjs/vite-plugin-federation";
 
 export default defineConfig({
-  server: {
-    port: 4175,
-  },
   plugins: [
     react(),
     federation({
@@ -38,6 +35,7 @@ export default defineConfig({
           requiredVersion: "^1.9.0",
         },
       },
+
       dev: true,
     }),
   ],

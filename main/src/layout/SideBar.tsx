@@ -9,8 +9,6 @@ import {
   ChevronRight,
   ChevronDown,
 } from "lucide-react";
-import { Card } from "flowbite-react";
-
 interface SubItem {
   path: string;
   label: string;
@@ -29,12 +27,9 @@ interface MenuItem {
   subItems?: Section[];
 }
 
-
-
 export const Sidebar: React.FC = () => {
   const location = useLocation();
-  const navigate = useNavigate();
-  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [activeSection, setActiveSection] = useState<string | null>("Integri");
   const [openDropdowns, setOpenDropdowns] = useState<Record<string, boolean>>(
     {}
   );
@@ -46,21 +41,8 @@ export const Sidebar: React.FC = () => {
     }));
   };
 
-  const handleSectionClick = (
-    label: string,
-    hasSubItems: boolean,
-    item?: MenuItem
-  ) => {
-    if (hasSubItems) {
-      setActiveSection((prev) => (prev === label ? null : label));
-      // setOpenDropdowns({});
-      // const defaultPath = item?.subItems?.[0]?.children?.[0]?.path;
-      // if (defaultPath && !location.pathname.startsWith("/integri")) {
-      //   navigate(defaultPath);
-      // }
-    } else {
-      setActiveSection(null);
-    }
+  const handleSectionClick = (label: string) => {
+    setActiveSection(label);
   };
 
   const menuItems: MenuItem[] = [
@@ -111,11 +93,14 @@ export const Sidebar: React.FC = () => {
   const activeMenu = menuItems.find((m) => m.label === activeSection);
 
   return (
-    <div className="flex border-t border-gray-700  pt-5">
-      {/* Left Sidebar (icon bar) */}
-      
-      <div className="w-[68px] flex flex-col bg-gray-900-950 text-white border-r border-gray-700">
-        <div className="flex flex-col items-center h-screen pt-16">
+   <div
+  style={{
+    background: "linear-gradient(0deg, rgba(0, 0, 0, 0.32) 0%, rgba(0, 0, 0, 0.32) 100%), radial-gradient(63.8% 100% at 50% 0%, rgba(22, 50, 79, 0.80) 0%, rgba(22, 50, 79, 0.00) 100%), #111",
+  }}
+  className="flex pt-16 border-t border-gray-700"
+>
+      <div className="w-[68px] flex flex-col  text-white border-r border-gray-700 p-4">
+        <div className="flex flex-col items-center h-screen ">
           {menuItems.map((item) => {
             const isActive = activeSection === item.label;
             const hasSubItems = !!item.subItems;
@@ -150,41 +135,36 @@ export const Sidebar: React.FC = () => {
         </div>
       </div>
 
-      {/* Right Sidebar (submenu) */}
       <div
-        className={`overflow-hidden bg-gradient-to-b from-gray-900 to-gray-950 pt-16 text-white border-r border-gray-700 transition-all duration-500 ease-in-out h-full ${
-          activeMenu && activeMenu.subItems
-            ? "w-[196px] opacity-100"
-            : "w-0 opacity-0"
-        }`}
+        className={`overflow-hidden   text-white border-r border-gray-700 transition-all duration-500 ease-in-out h-full w-[196px] p-4`}
       >
         {activeMenu && activeMenu.subItems && (
-          <div className="space-y-4  px-[12px] h-full overflow-auto">
-            {activeMenu.subItems.map((section) => {
+          <div className="h-full overflow-auto  ">
+            {activeMenu.subItems.map((section, i) => {
               const defaultPath = section.children?.[0]?.path;
               return (
-                <div key={section.label}>
+                <div key={section.label} className="">
                   {section.children ? (
                     <>
-                      {/* Section header */}
                       <button
                         type="button"
                         onClick={() => toggleDropdown(section.label)}
-                        className="flex items-center justify-between w-full p-[6px] text-gray-300 hover:bg-gray-700 rounded-md transition-all"
+                        className={`flex items-center justify-between w-full text-gray-300 hover:bg-gray-700 rounded-md transition-all   p-[6px]  ${
+                          i === 0 ? "" : "mt-4"
+                        }`}
                       >
                         <span className="text-sm font-medium">
                           {section.label}
                         </span>
                         {openDropdowns[section.label] ? (
-                          <ChevronDown size={16} />
+                          <ChevronDown size={18} />
                         ) : (
-                          <ChevronRight size={16} />
+                          <ChevronRight size={18} />
                         )}
                       </button>
 
-                      {/* Children links */}
                       {openDropdowns[section.label] && (
-                        <div className="mt-2 space-y-2">
+                        <div className=" ">
                           {section.children.map((subItem) => {
                             const isActive = location.pathname.startsWith(
                               subItem.path
@@ -193,14 +173,13 @@ export const Sidebar: React.FC = () => {
                               <Link
                                 key={subItem.path}
                                 to={subItem.path}
-                                onClick={() => setActiveSection(null)}
-                                className={`flex items-center p-[6px] rounded-lg transition-all duration-300 ${
+                                className={`flex items-center rounded-lg transition-all duration-300 mt-4 p-[6px] gap-x-1 ${
                                   isActive
                                     ? "bg-gray-700 font-medium text-white"
                                     : "text-gray-300 hover:bg-gray-700 hover:text-white"
                                 }`}
                               >
-                                <span className="mr-2">{subItem.icon}</span>
+                                <span>{subItem.icon}</span>
                                 {subItem.label}
                               </Link>
                             );
@@ -211,7 +190,7 @@ export const Sidebar: React.FC = () => {
                   ) : (
                     <Link
                       to={defaultPath || "#"}
-                      className={`block p-[6px] rounded-md transition-all ${
+                      className={`block  rounded-md transition-all ${
                         defaultPath && location.pathname.startsWith(defaultPath)
                           ? "bg-gray-700 text-white"
                           : "text-gray-300 hover:bg-gray-700 hover:text-white"

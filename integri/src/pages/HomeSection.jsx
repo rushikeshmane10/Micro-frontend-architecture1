@@ -4,7 +4,7 @@ import BodyWrapper from "../components/BodyWrapper";
 function HomeSection() {
   return (
     <BodyWrapper>
-      <div className="bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col">
+      <div className="bg-gradient-to-br  ">
         <p>111122vvvvv222dddddd2dddd</p>
         <p>demo</p>
         <p>demo</p>

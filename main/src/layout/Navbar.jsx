@@ -9,7 +9,7 @@ import {
   ModalFooter,
   ModalHeader,
 } from "flowbite-react";
-
+import { Button1 } from "@your-org/design-system/components";
 
 function AddUserModal() {
   const [openModal, setOpenModal] = useState(true);
@@ -52,31 +52,33 @@ function AddUserModal() {
 
 export const Navbar = () => {
   return (
-<div
-  style={{
-    background: `
+    <div
+      style={{
+        background: `
       linear-gradient(90deg, rgba(0, 0, 0, 0.32) 0%, rgba(0, 0, 0, 0.32) 100%), 
       radial-gradient(100% 63.8% at 0% 50%, rgba(22, 50, 79, 0.80) 0%, rgba(22, 50, 79, 0.00) 100%), 
       #111
     `,
-  }}
-  className="w-full absolute z-50 h-[64px] flex items-center px-6 shadow-md"
->
-  <div className="flex items-center space-x-2 h-8 w-32">
-    <img
-      src={logo}
-      alt="TrueArmor Logo"
-      className="w-full h-full object-contain"
-    />
-  </div>
-  <div className="ml-auto flex items-center space-x-6 text-gray-300">
-    <button className="hover:text-white">
-      <Bell size={16} />
-    </button>
-    <button className="hover:text-white">
-      <MoreVertical size={16} />
-    </button>
-  </div>
-</div>
+      }}
+      className="w-full absolute z-50 h-[64px] flex items-center px-6 shadow-md border-b border-gray-700"
+    >
+      <div className="flex items-center space-x-2 h-8 w-32">
+        <img
+          src={logo}
+          alt="TrueArmor Logo"
+          className="w-full h-full object-contain"
+        />
+      </div>
+      <div className="ml-auto flex items-center space-x-6 text-gray-300">
+        <Button1> Click</Button1>
+        <button className="text-white text-xs font-medium">Settings</button>
+        <button className="hover:text-white">
+          <Bell size={16} />
+        </button>
+        <button className="hover:text-white">
+          <MoreVertical size={16} />
+        </button>
+      </div>
+    </div>
   );
 };

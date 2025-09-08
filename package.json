@@ -1,0 +1,16 @@
+{
+  "name": "my-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "packageManager": "pnpm@10.15.0",
+  "workspaces": [
+    "main",
+    "integri",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "pnpm -r run build",
+    "dev": "pnpm -r run dev",
+    "lint": "pnpm -r run lint"
+  }
+}

@@ -1,4 +1,4 @@
-import sharedConfig from "tailwind-config";
+import sharedConfig from "@your-org/design-system/tailwind";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -10,13 +10,7 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    
-    // 👇 Use absolute path to ensure it works
-    path.resolve(__dirname, "../../packages/design-system/src/**/*.{js,jsx,ts,tsx}"),
-    
-    // 👇 Also include the node_modules installation
-    "./node_modules/@your-org/design-system/src/**/*.{js,jsx,ts,tsx}",
-    
+    "../../packages/design-system/src/**/*.{js,jsx,ts,tsx}",
     "./node_modules/flowbite/**/*.js",
     "./node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],

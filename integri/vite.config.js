@@ -12,7 +12,20 @@ export default defineConfig({
         "./HomePage": "./src/pages/HomeSection.jsx",
         "./AboutPage": "./src/pages/About.jsx",
       },
-      shared: ["react", "react-dom"],
+      shared: {
+        react: {
+          singleton: true,
+          eager: true,
+          requiredVersion: "^18.2.0",
+          strictVersion: true,
+        },
+        "react-dom": {
+          singleton: true,
+          eager: true,
+          requiredVersion: "^18.2.0",
+          strictVersion: true,
+        },
+      },
     }),
   ],
   build: {

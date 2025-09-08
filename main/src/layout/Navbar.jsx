@@ -9,7 +9,7 @@ import {
   ModalFooter,
   ModalHeader,
 } from "flowbite-react";
-import { Button1 } from "@your-org/design-system/components";
+import { Button1 } from "@your-org/design-system";
 
 function AddUserModal() {
   const [openModal, setOpenModal] = useState(true);

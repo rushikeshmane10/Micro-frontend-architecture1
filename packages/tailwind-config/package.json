@@ -9,8 +9,8 @@
     "tailwind.config.js"
   ],
   "exports": {
-    ".": "./tailwind.config.js",       
-    "./components": "./src/index.js"  
+    ".": "./src/index.js",
+    "./tailwind": "./tailwind.config.js"
   },
   "peerDependencies": {
     "react": ">=18",

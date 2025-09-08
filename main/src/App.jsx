@@ -13,6 +13,11 @@ export default function App() {
             <Route path="/" element={<ShellLayout />}>
               <Route path="/integri/home" element={<HomePage />} />
               <Route path="/integri/about" element={<AboutPage />} />
+              <Route path="/integri/about" element={<AboutPage />} />
+              <Route path="/integri/about" element={<AboutPage />} />
+              <Route path="/integri/about" element={<AboutPage />} />
+              <Route path="/integri/about" element={<AboutPage />} />
+              <Route path="/integri/about" element={<AboutPage />} />
             </Route>
           </Routes>
         </Suspense>

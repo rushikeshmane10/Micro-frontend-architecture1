@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "main",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
-    "@your-org/design-system": "file:../packages/tailwind-config",
+    "@your-org/design-system": "file:..\\packages\\tailwind-config",
     "concurrently": "^9.2.1",
     "flowbite": "^3.1.2",
     "flowbite-react": "^0.12.8",

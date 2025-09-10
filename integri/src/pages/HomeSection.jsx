@@ -1,5 +1,5 @@
 import BodyWrapper from "../components/BodyWrapper";
-import { Button1 } from "@your-org/design-system";
+import { Button1,ButtonT } from "@your-org/design-system";
 
 
 
@@ -7,7 +7,10 @@ function HomeSection() {
   return (
     <BodyWrapper>
       <div className="bg-gradient-to-br  ">
-        <Button1>clicke </Button1>
+        <ButtonT>
+
+          
+        </ButtonT>
         <p>111122vvvvv222dddddd2dddd</p>
         <p>demo</p>
         <p>demo</p>

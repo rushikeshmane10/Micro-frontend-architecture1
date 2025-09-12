@@ -9,46 +9,7 @@ import {
   ModalFooter,
   ModalHeader,
 } from "flowbite-react";
-import { Button1 } from "@your-org/design-system";
-
-function AddUserModal() {
-  const [openModal, setOpenModal] = useState(true);
-
-  return (
-    <>
-      <Button onClick={() => setOpenModal(true)}>Toggle modal</Button>
-      <Modal dismissible show={openModal} onClose={() => setOpenModal(false)}>
-        <ModalHeader>Terms of Service</ModalHeader>
-        <ModalBody>
-          <div className="space-y-6">
-            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              With less than a month to go before the European Union enacts new
-              consumer privacy laws for its citizens, companies around the world
-              are updating their terms of service agreements to comply.
-            </p>
-            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              The European Union’s General Data Protection Regulation (G.D.P.R.)
-              goes into effect on May 25 and is meant to ensure a common set of
-              data rights in the European Union. It requires organizations to
-              notify users as soon as possible of high-risk data breaches that
-              could personally affect them.
-            </p>
-          </div>
-        </ModalBody>
-        <ModalFooter>
-          <Button className="p-6 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white hover:bg-gradient-to-br focus:ring-blue-300 dark:focus:ring-blue-800">
-            Blue
-          </Button>
-          <Badge color="purple">Purple</Badge>
-          <Button color="gray">Gray</Button>
-          <Button className="bg-bl" onClick={() => setOpenModal(false)}>
-            Decline
-          </Button>
-        </ModalFooter>
-      </Modal>
-    </>
-  );
-}
+import { ButtonT } from "@your-org/design-system";
 
 export const Navbar = () => {
   return (
@@ -69,8 +30,8 @@ export const Navbar = () => {
           className="w-full h-full object-contain"
         />
       </div>
-      <div className="ml-auto flex items-center space-x-6 text-gray-300">
-        <Button1> Click</Button1>
+      <div className="ml-auto flex items-center space-x-6  text-gray-300">
+        <ButtonT icon={<Bell />}></ButtonT>
         <button className="text-white text-xs font-medium">Settings</button>
         <button className="hover:text-white">
           <Bell size={16} />

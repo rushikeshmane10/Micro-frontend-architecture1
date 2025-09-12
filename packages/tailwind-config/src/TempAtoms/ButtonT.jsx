@@ -1,9 +1,8 @@
 export default function ButtonT({
-  label = "Clickme", // Default label
+  label = "Clickme",
   customClass = "",
-  icon, // Accepts JSX like <ArrowRight size={16} />
-  iconPosition = "after", // "before" or "after"
-  ...props
+  icon,
+  iconPosition = "after",
 }) {
   return (
     <button
@@ -14,19 +13,15 @@ export default function ButtonT({
                    text-sm font-medium font-[Montserrat] leading-[150%]
                   hover:bg-[#1f4c63] active:scale-95 transition-all duration-200
                   ${customClass}`}
-      {...props}
     >
-      {/* Show icon BEFORE label */}
-      {icon && iconPosition === "before" && (
-        <span className="flex items-center">{icon}</span>
-      )}
-
-      {label}
-
-      {/* Show icon AFTER label */}
-      {icon && iconPosition === "after" && (
-        <span className="flex items-center">{icon}</span>
-      )}
+      <div
+        className={`flex items-center gap-2 ${
+          iconPosition === "right" ? "flex-row-reverse" : "flex-row"
+        }`}
+      >
+        <span>{icon}</span>
+        <span>{label}</span>
+      </div>
     </button>
   );
 }

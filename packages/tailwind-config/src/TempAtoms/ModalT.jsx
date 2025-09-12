@@ -1,11 +1,9 @@
-"use client";
-
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "flowbite-react";
 
 export default function ModalT({ 
   open, 
   onClose, 
-  content = {} // single object for all modal data
+  content = {} 
 }) {
   const {
     title = "Default Title",

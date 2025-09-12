@@ -5,7 +5,7 @@ type BodyWrapperProps = {
 
 const BodyWrapper = ({ className = '', children }: React.PropsWithChildren<BodyWrapperProps>) => {
     return (
-        <div className={`font-montserrat  overflow-y-auto h-screen ${className}`}>
+        <div className={`font-montserrat  overflow-y-auto h-screen     ${className}`}>
             {children}
         </div>
     );

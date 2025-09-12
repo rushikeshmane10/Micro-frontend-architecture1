@@ -9,7 +9,7 @@ const ShellLayout = () => {
         <Navbar />
         <div className="flex flex-1">
           <Sidebar />
-          <main className="flex-1 bg-gray-100 pt-16">
+          <main className="flex-1 bg-white pt-20 px-5 ">
             <Outlet />
           </main>
         </div>

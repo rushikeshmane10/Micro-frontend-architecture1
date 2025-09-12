@@ -20,7 +20,11 @@ module.exports = {
       backgroundImage: {
         "gray-900-950": "linear-gradient(to bottom, #111827, #0a0a0a)",
       },
+      fontFamily: {
+        montserrat: ["Montserrat", "sans-serif"],
+      },
     },
   },
+
   plugins: [require("flowbite/plugin")],
 };
